@@ -3,7 +3,7 @@ import "../../stylesheets/styles.css";
 import BaseImage from '../../components/BaseImage';
 
 import { UserContext } from '../../components/BaseShot';
-import { prePathUrl, generateStandardNum } from "../../components/CommonFunctions"
+import { prePathUrl, generateStandardNum, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../../components/CommonFunctions"
 
 import Lottie from "react-lottie-segments";
 import loadAnimation from '../../utils/loadAnimation'
@@ -100,6 +100,8 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
     useEffect(
         () => {
             isGamestoneted = true;
+
+            setRepeatAudio(audioList.repeatAudio)
 
             setTimeout(() => {
                 setStopAni(true)
@@ -224,6 +226,7 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
 
     function clickFunc(num) {
 
+        stopRepeatAudio();
         if (currentNum == 0)
             stopSound();
 
@@ -300,8 +303,10 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
 
 
                             setTimeout(() => {
-                                if (currentStep < 5)
+                                if (currentStep < 5) {
                                     playEatingAni();
+                                    startRepeatAudio();
+                                }
                                 else {
                                     isGamestoneted = false;
                                     lastHen.current.className = 'showObject'
@@ -337,6 +342,7 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
                                 stoneBaseList[i].current.style.cursor = 'default'
                             }
                             baseRef.current.style.pointerEvents = ''
+                            startRepeatAudio();
                         }
 
 
@@ -348,6 +354,7 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
 
                 audioList.buzzAudio.currentTime = 0;
                 audioList.buzzAudio.play();
+                startRepeatAudio();
 
                 showButtonAni(redstone, num)
             }

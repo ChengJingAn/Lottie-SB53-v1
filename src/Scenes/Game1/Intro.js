@@ -4,7 +4,7 @@ import "../../stylesheets/styles.css";
 import Lottie from "react-lottie-segments";
 import loadAnimation from '../../utils/loadAnimation'
 import { UserContext } from '../../components/BaseShot';
-import { prePathUrl, initialAudio } from '../../components/CommonFunctions';
+import { prePathUrl, initialAudio, startRepeatAudio , stopRepeatAudio} from '../../components/CommonFunctions';
 import GamePanel from "./GamePanel"
 import Review from "./Review"
 import loadSound from "../../utils/loadSound"
@@ -133,6 +133,7 @@ const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo, showMusicBtn }, 
                             }, 1000);
 
                             setIntroHide(true)
+                            startRepeatAudio()
                         }, 1000);
 
                         gamePanelRef.current.style.display = 'inline-block'

@@ -40,8 +40,7 @@ const App = React.forwardRef(({ geo, _setBackground, _startTransition, baseGeo, 
   const audioList = useContext(UserContext)
 
   const [index, setIndex] = useState(0);
-
-  const refScene1 = useRef();
+  
   const musicRef = useRef();
 
   __geo = geo;
