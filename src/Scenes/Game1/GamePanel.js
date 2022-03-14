@@ -131,6 +131,8 @@ export default function Scene2({ finishGame, _baseGeo, _geo, stopSound }) {
                 currentNum = 0;
                 currentStep = 0
 
+                movingSceneNum = 0;
+
                 audioList.clapAudio.pause();
                 audioList.clapAudio.currentTime = 0;
             }
