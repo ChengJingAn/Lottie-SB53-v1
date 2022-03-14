@@ -93,7 +93,8 @@ const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo, showMusicBtn }, 
     function clickFunc() {
 
         showMusicBtn()
-        // audioList.titleAudio.pause();
+        audioList.titleAudio.pause();
+        audioList.titleAudio.currentTime = 0;
         // audioList.titleAudio = loadSound('SB_53_Audio_10');
 
         if (!isGameStarted)
